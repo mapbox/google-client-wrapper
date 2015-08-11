@@ -1,5 +1,5 @@
 {
-  "name": "google-client",
+  "name": "google-client-wrapper",
   "version": "1.0.0",
   "description": "Higher level wrapper around Google Client API",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mapbox/google-client.git"
+    "url": "git@github.com:mapbox/google-client-wrapper.git"
   },
   "keywords": [
     "client",
@@ -21,9 +21,9 @@
   "author": "@tristen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mapbox/google-client/issues"
+    "url": "https://github.com/mapbox/google-client-wrapper/issues"
   },
-  "homepage": "https://github.com/mapbox/google-client#readme",
+  "homepage": "https://github.com/mapbox/google-client-wrapper#readme",
   "dependencies": {
     "xhr": "^2.0.3"
   },

@@ -19,23 +19,24 @@ gc().then((gapi) => {
     'summary': 'Test entry',
     'start': { date: '2015-08-11' },
     'end': { date: '2015-08-11' }
-  }, (error, res) => {
+  }, (error, response) => {
     if (error) return console.log('Error inserting', error);
-
-    var eventId = res.id;
+    console.log('Event created', response);
+    var eventId = response.id;
 
     // Event updating
     google.calendarUpdate(eventId, {
       'summary': 'Updated entry',
       'start': { date: '2015-08-11' },
       'end': { date: '2015-08-17' }
-    }, (err) => {
+    }, (err, res) => {
       if (err) return console.log('Error updating', err);
+      console.log('Event updated', res);
 
       // Event deletion
-      google.calendarDelete(eventId, (e) => {
+      google.calendarDelete(eventId, (e, r) => {
           if (e) return console.log('Error deleting', e);
-          console.log('Event deleted', res);
+          console.log('Event deleted', r);
       });
     });
   });

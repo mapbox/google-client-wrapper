@@ -9,7 +9,33 @@ function googleClient(opts) {
     throw new Error('Missing required options');
   }
 
-  function googleAuth(cb) {
+  function loadCal(cb) {
+    var auth = {
+      client_id: opts.client,
+      scope: opts.scope,
+      immediate: true
+    };
+
+    gapi.auth.init(() => {
+      gapi.auth.authorize(auth, (res) => {
+        if (res.error) {
+          client.auth((err) => {
+            if (err) return cb(err);
+            gapi.client.load('calendar', 'v3', () => cb(null));
+          });
+        } else {
+          gapi.client.load('calendar', 'v3', () => cb(null));
+        }
+      });
+    });
+  }
+
+  /**
+   * Authenticates with a Google App
+   *
+   * @param {Function} cb Function that is called after request execution
+   */
+  client.auth = function(cb) {
     gapi.auth.authorize({
       client_id: opts.client,
       scope: opts.scope,
@@ -38,28 +64,7 @@ function googleClient(opts) {
         });
       });
     });
-  }
-
-  function loadCal(cb) {
-    var auth = {
-      client_id: opts.client,
-      scope: opts.scope,
-      immediate: true
-    };
-
-    gapi.auth.init(() => {
-      gapi.auth.authorize(auth, (res) => {
-        if (res.error) {
-          googleAuth((err) => {
-            if (err) return cb(err);
-            gapi.client.load('calendar', 'v3', () => cb(null));
-          });
-        } else {
-          gapi.client.load('calendar', 'v3', () => cb(null));
-        }
-      });
-    });
-  }
+  };
 
   /**
    * Inserts a calendar entry
