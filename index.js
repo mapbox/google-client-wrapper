@@ -86,7 +86,7 @@ function googleClient(opts) {
   /**
    * Updates a calendar entry
    *
-   * @param {Strong} eventId eventId for an existing calendar entry
+   * @param {String} eventId eventId for an existing calendar entry
    * @param {Object} resource A resource object as documented here: https://goo.gl/z8bFhX
    * @param {Function} cb Function that is called after request execution
    */
@@ -105,7 +105,7 @@ function googleClient(opts) {
   /**
    * Deletes a calendar entry
    *
-   * @param {Strong} eventId eventId for an existing calendar entry
+   * @param {String} eventId eventId for an existing calendar entry
    * @param {Function} cb Function that is called after request execution
    */
   client.calendarDelete = function(eventId, cb) {
