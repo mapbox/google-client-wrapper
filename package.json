@@ -4,7 +4,7 @@
   "description": "Higher level wrapper around Google Client API",
   "main": "index.js",
   "scripts": {
-    "test": ". ./env.sh & npm run lint && (browserify test/test.js -d | smokestack | tap-status)",
+    "test": ". ./env.sh & npm run lint && browserify test/test.js -d | smokestack | tap-status",
     "lint": "eslint --no-eslintrc -c .eslintrc index.js",
     "start": ". ./env.sh && budo debug/index.js --serve=debug/bundle.js --live -d"
   },

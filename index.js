@@ -51,7 +51,7 @@ function googleClient(opts) {
           }
 
           // Revoke via xhr (There's no supported gapi method.)
-          if (opts.email && resp.email !== opts.email) {
+          if (opts.email && resp.email.toLowerCase() !== opts.email.toLowerCase()) {
             xhr({
               uri: 'https://accounts.google.com/o/oauth2/revoke?token=' + gapi.auth.getToken().access_token
             }, () => {
